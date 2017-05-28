@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="DataTemplates_Bindings.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DataTemplates_Bindings"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Name="TT">
+    <Page.Resources>
+        <!--every datatemplate has DataContext automatically-->
+        <DataTemplate x:Key="PersonTXBinding" x:DataType="local:PErson">
+            <Grid Height="100" Width="100">
+                <Ellipse HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Beige" />
+                <TextBlock Text="{x:Bind Name}" VerticalAlignment="Top" HorizontalAlignment="Center" />
+                <ComboBox  ItemsSource="{x:Bind Numbers}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Ellipse Height="20" Width="20" Fill="Blue" HorizontalAlignment="Left" />
+                <Ellipse Height="20" Width="20" Fill="Blue" HorizontalAlignment="Right"/>
+                <Border Background="Red" Height="5" Width="30" VerticalAlignment="Bottom" Margin="0,0,0,10" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="PersonTBinding">
+            <Grid Height="100" Width="100">
+                <Ellipse HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Beige" />
+                <TextBlock Text="{Binding Name}" VerticalAlignment="Top" HorizontalAlignment="Center" />
+                <ComboBox  ItemsSource="{Binding Numbers}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Ellipse Height="20" Width="20" Fill="Blue" HorizontalAlignment="Left" />
+                <Ellipse Height="20" Width="20" Fill="Blue" HorizontalAlignment="Right"/>
+                <Border Background="Red" Height="5" Width="30" VerticalAlignment="Bottom" Margin="0,0,0,10" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel >
+            <TextBlock Text="{Binding  Length}" />
+            <TextBlock Text="{x:Bind X}" />
+            <TextBlock Text="{Binding}" />
+
+            <!--<GridView ItemsSource="{x:Bind Numbers}"/>-->
+            <ListView ItemsSource="{x:Bind Persons}" ItemTemplate="{StaticResource PersonTXBinding}"/>
+            <GridView ItemsSource="{Binding }" ItemTemplate="{StaticResource PersonTBinding}"/>
+
+        </StackPanel>
+
+      
+    </Grid>
+</Page>
